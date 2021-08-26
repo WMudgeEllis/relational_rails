@@ -1,3 +1,3 @@
 class Vehicle < ApplicationRecord
-  # belongs_to :car_lot
+  belongs_to :car_lot
 end
