@@ -6,7 +6,7 @@
 require 'rails_helper'
 
 
-RSpec.describe 'Bookshelf books page' do
+RSpec.describe 'Bookshelf books page', type: :feature do
 
   it 'displays book details' do
     shelf1 = Bookshelf.create!(name: "Bamboo", full: false, capacity: 22)
