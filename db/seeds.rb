@@ -8,8 +8,8 @@
 
 pine = Bookshelf.create!(name: 'Pine', full: false, capacity: 12)
 oak = Bookshelf.create!(name: 'Oak', full: true, capacity: 2)
-Book.create!(name: 'Feet of Clay', read: true, read_time: 6, bookshelf_id: oak.id)
-Book.create!(name: 'Three Guineas', read: false, read_time: 12, bookshelf_id: oak.id)
+Book.create!(name: 'Feet of Clay', author: 'Terry Pratchet', read: true, read_time: 6, bookshelf_id: oak.id)
+Book.create!(name: 'Three Guineas', author: 'Virginia Woolf', read: false, read_time: 12, bookshelf_id: oak.id)
 
 bummer = CarLot.create!(name: "Michael'z Bummer Dealz", being_cleaned: false, lot_area: 16)
 fly = CarLot.create!(name: "Fly Rides", being_cleaned: true, lot_area: 9001)
