@@ -1,3 +1,3 @@
 class Book < ApplicationRecord
-  # belongs_to :bookshelf 
+  belongs_to :bookshelf 
 end

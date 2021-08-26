@@ -4,6 +4,6 @@ class BookshelvesController < ApplicationController
   end
 
   def show 
-    @bookshelf = Bookshelf.find(params[:id])
+    @bookshelves = Bookshelf.find(params[:id])
   end
 end
