@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get '/books', to: 'books#index'
   get '/books/:id', to: 'books#show'
   get '/vehicles/:id', to: 'vehicles#show'
+  get 'bookshelves/:bookshelf_id/books', to: 'bookshelf_books#index'
+  get 'car_lots/:car_lot_id/vehicles', to: 'car_lot_vehicles#index'
 end

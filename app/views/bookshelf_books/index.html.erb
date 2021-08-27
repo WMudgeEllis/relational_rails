@@ -3,8 +3,6 @@
 <p><a href="/bookshelves">bookshelf index</a></p>
 <p><a href="/car_lots">car lot index</a></p>
 
-<h1>Books</h1>
-
 <% @books.each do |book| %>
   <h3>name: <%= book.name %></h3>
   <p>by: <%= book.author %></p>
@@ -14,4 +12,4 @@
   <p>bookshelf id: <%= book.bookshelf_id %></p>
   <p>created: <%= book.created_at %></p>
   <p>updated: <%= book.updated_at %></p>
-<% end %>
+  <% end %>
