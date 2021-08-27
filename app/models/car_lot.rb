@@ -5,4 +5,8 @@ class CarLot < ActiveRecord::Base
     order(:created_at).reverse
   end
 
+  def number_of_vehicles
+    vehicles.length
+  end
+
 end
