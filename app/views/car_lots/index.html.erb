@@ -1,5 +1,5 @@
 <h1>All Car Lots</h1>
 
 <% @car_lots.each do |car_lot| %>
-  <h3><%= car_lot.name %></h3>
+  <p><%= car_lot.name %> <%= car_lot.created_at %></p>
 <% end %>

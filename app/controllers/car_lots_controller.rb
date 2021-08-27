@@ -1,9 +1,11 @@
 class CarLotsController < ApplicationController
-  def index 
-    @car_lots = CarLot.all
+  def index
+    @car_lots = CarLot.order(:created_at).reverse
   end
 
-  def show 
+  def show
     @car_lots = CarLot.find(params[:id])
   end
+
+
 end
