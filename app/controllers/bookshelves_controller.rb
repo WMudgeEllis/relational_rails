@@ -6,4 +6,5 @@ class BookshelvesController < ApplicationController
   def show
     @bookshelves = Bookshelf.find(params[:id])
   end
+
 end
