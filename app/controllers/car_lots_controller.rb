@@ -7,5 +7,10 @@ class CarLotsController < ApplicationController
     @car_lots = CarLot.find(params[:id])
   end
 
+  def new 
+  end
 
+  def create
+    require "pry"; binding.pry
+  end
 end

@@ -12,4 +12,12 @@ RSpec.describe 'the car_lot index page', type: :feature do
     expect(page).to have_content(car1.created_at)
     expect(page.all(:css, "p")[0].text.include?("Dealz")).to be(true)
   end
+
+  it 'can link to new car lots' do 
+    visit '/car_lots' 
+
+    expect(page).to have_link("new car lot")
+    click_link "new car lot"
+    expect(page.current_path).to eq('/car_lot/new')
+  end
 end
