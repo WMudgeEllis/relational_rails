@@ -7,4 +7,19 @@ class BookshelvesController < ApplicationController
     @bookshelves = Bookshelf.find(params[:id])
   end
 
+  def new
+  end
+
+  def create
+    # require "pry"; binding.pry
+    name = params[:name]
+    full = params[:full] == 'true'
+    capacity = params[:capacity].to_i
+
+
+    Bookshelf.create(name: name, full: full, capacity: capacity)
+
+    redirect_to '/bookshelves'
+  end
+
 end

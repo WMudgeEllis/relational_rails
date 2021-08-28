@@ -1,0 +1,22 @@
+<a href="/books">books index</a>
+<a href="/vehicles">vehicle index</a>
+<a href="/bookshelves">bookshelf index</a>
+<a href="/car_lots">car lot index</a>
+
+<form action="/bookshelves" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter a new bookshelf name:</p>
+
+  <input type='text' name='name'/><br/>
+  <p>Is the bookshelf full?</p>
+
+  <select id="full" name="full">
+    <option value=true>true</option>
+    <option value=false>false</option>
+  </select>
+
+  <p>What is the capacity of the bookshelf</p>
+  <input type='integer' name='capacity'/><br/>
+
+  <input type='submit'/>
+</form>

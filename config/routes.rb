@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   get '/vehicles/:id', to: 'vehicles#show'
   get 'bookshelves/:bookshelf_id/books', to: 'bookshelf_books#index'
   get 'car_lots/:car_lot_id/vehicles', to: 'car_lot_vehicles#index'
+
+  get 'bookshelf/new', to: 'bookshelves#new'
+  post 'bookshelves', to: 'bookshelves#create'
 end
