@@ -17,7 +17,17 @@ RSpec.describe 'the car_lot index page', type: :feature do
     visit '/car_lots' 
 
     expect(page).to have_link("new car lot")
+
     click_link "new car lot"
+
     expect(page.current_path).to eq('/car_lot/new')
+
+    fill_in :name, with: "Weslas Teslas"
+    fill_in :lot_area, with: 1234
+    click_button "submit"
+
+    lot = CarLot.last
+
+    expect(page).to have_content(lot.name)
   end
 end
