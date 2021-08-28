@@ -12,4 +12,14 @@ RSpec.describe 'the bookshelves index page', type: :feature do
     expect(page.all(:css, "p")[0].text.include?("Cherry")).to be(true)
 
   end
+
+  it 'can link to new bookshelves' do
+    visit '/bookshelves'
+
+    expect(page).to have_link('New Bookshelf')
+
+    click_link 'New Bookshelf'
+    # require "pry"; binding.pry
+    expect(page.current_path).to eq('/bookshelf/new')
+  end
 end
