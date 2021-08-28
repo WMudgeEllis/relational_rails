@@ -22,4 +22,7 @@ class BookshelvesController < ApplicationController
     redirect_to '/bookshelves'
   end
 
+  def edit  
+
+  end
 end

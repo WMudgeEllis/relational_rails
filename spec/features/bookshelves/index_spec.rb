@@ -19,7 +19,15 @@ RSpec.describe 'the bookshelves index page', type: :feature do
     expect(page).to have_link('New Bookshelf')
 
     click_link 'New Bookshelf'
-    # require "pry"; binding.pry
+
     expect(page.current_path).to eq('/bookshelf/new')
+
+    fill_in :name, with: "Cherry"
+    fill_in :capacity, with: 1
+    click_button "submit"
+
+    shelf = Bookshelf.last
+
+    expect(page).to have_content(shelf.name)
   end
 end

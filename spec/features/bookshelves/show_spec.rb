@@ -22,4 +22,33 @@ RSpec.describe 'a particular bookshelf page', type: :feature do
 
     expect(page).to have_content('the number of books in this shelf is: 3')
   end
+
+  it 'can updated bookshelf' do
+    shelf = Bookshelf.create!(name: "Mahogany", full: false, capacity: 31)
+
+    visit "/bookshelves/#{shelf.id}"
+    expect(page).to have_link("update shelf")
+    click_link "update shelf"
+    expect(page.current_path).to eq "/bookshelves/#{shelf.id}/edit"
+    fill_in :name, with: "Steel" 
+    fill_in :capacity, with: 2000
+    click_button "submit"
+
+    expect(page.current_path).to eq "/bookshelves/#{shelf.id}"
+    expect(page).to have_content("Steel")
+    expect(page).to have_content(2000)
+  end
 end
+
+# User Story 12, Parent Update (x2)
+
+# As a visitor
+# When I visit a parent show page
+# Then I see a link to update the parent "Update Parent"
+# When I click the link "Update Parent"
+# Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
+# When I fill out the form with updated information
+# And I click the button to submit the form
+# Then a `PATCH` request is sent to '/parents/:id',
+# the parent's info is updated,
+# and I am redirected to the Parent's Show page where I see the parent's updated info
