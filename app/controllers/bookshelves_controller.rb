@@ -11,11 +11,9 @@ class BookshelvesController < ApplicationController
   end
 
   def create
-    # require "pry"; binding.pry
     name = params[:name]
     full = params[:full] == 'true'
     capacity = params[:capacity].to_i
-
 
     Bookshelf.create(name: name, full: full, capacity: capacity)
 
@@ -23,6 +21,13 @@ class BookshelvesController < ApplicationController
   end
 
   def edit  
+    @bookshelves = Bookshelf.find(params[:bookshelf_id])
+  end
 
+  def update
+    shelf = Bookshelf.find(params[:id])
+    full = params[:full] == 'true'
+    shelf.update(name: params[:name], full: full, capacity: params[:capacity].to_i)
+    redirect_to "/bookshelves/#{shelf.id}"
   end
 end

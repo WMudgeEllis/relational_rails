@@ -1,0 +1,19 @@
+<a href="/books">books index</a>
+<a href="/vehicles">vehicle index</a>
+<a href="/bookshelves">bookshelf index</a>
+<a href="/car_lots">car lot index</a>
+
+<form action="/car_lots/<%= @car_lot.id %>/vehicles" method="post">
+  <input type="hidden" name="athenticity_token" value="<%= form_authenticity_token %>">
+  <p>vehicle name</p>
+  <input type="text" name="name"><br>
+  <p>sold?</p>
+  <select id="sold" name="sold">
+    <option value="pick one">pick one</option>
+    <option value="true">true</option>
+    <option value="false">false</option>
+  </select>
+  <p>price</p>
+  <input type="integer" name="price">
+  <input type="submit" name="submit">
+</form>

@@ -19,4 +19,11 @@ Rails.application.routes.draw do
   post 'car_lots', to: 'car_lots#create'
 
   get 'bookshelves/:bookshelf_id/edit', to: 'bookshelves#edit'
+  patch 'bookshelves/:id', to: 'bookshelves#update'
+
+  get 'car_lots/:car_lot_id/edit', to: 'car_lots#edit'
+  patch 'car_lots/:id', to: 'car_lots#update'
+
+  get 'car_lots/:car_lot_id/vehicles/new', to: 'car_lot_vehicles#new'
+  post "car_lots/:car_lot_id/vehicles", to: 'car_lot_vehicles#create'
 end

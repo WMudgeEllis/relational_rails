@@ -24,4 +24,19 @@ RSpec.describe 'a particular car lot', type: :feature do
     expect(page).to have_content('the number of vehicles in this car lot is: 3')
 
   end
+
+  it 'updates car lot information' do 
+    lot = CarLot.create!(name: "Michael's Bummer Dealz", being_cleaned: false, lot_area: 310)
+    
+    visit "/car_lots/#{lot.id}"
+    expect(page).to have_link("update car lot")
+    click_link 'update car lot'
+    expect(page.current_path).to eq("/car_lots/#{lot.id}/edit") 
+    fill_in :name, with: 'Toys Yotas'
+    fill_in :lot_area, with: 7589
+    click_button 'submit'
+    expect(page.current_path).to eq("/car_lots/#{lot.id}")
+    expect(page).to have_content('Yotas')
+    expect(page).to have_content(7589)
+  end
 end
