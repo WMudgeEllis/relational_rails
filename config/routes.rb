@@ -23,4 +23,7 @@ Rails.application.routes.draw do
 
   get 'car_lots/:car_lot_id/edit', to: 'car_lots#edit'
   patch 'car_lots/:id', to: 'car_lots#update'
+
+  get 'car_lots/:car_lot_id/vehicles/new', to: 'car_lot_vehicles#new'
+  post "car_lots/:car_lot_id/vehicles", to: 'car_lot_vehicles#create'
 end

@@ -4,6 +4,7 @@
 <a href="/car_lots">car lot index</a>
 
 <h1>Vehicles</h1>
+<a href="/car_lots/<%= @car_lot.id %>/vehicles/new">create new vehicle</a>
 
 <% @cars.each do |car| %>
   <h3>name: <%= car.name %></h3>
