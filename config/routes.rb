@@ -32,4 +32,6 @@ Rails.application.routes.draw do
 
   get '/books/:book_id/edit', to: 'books#edit'
   patch 'books/:book_id', to: 'books#update'
+
+  get '/vehicles/:vehicle_id/edit', to: 'vehicles#edit'
 end
