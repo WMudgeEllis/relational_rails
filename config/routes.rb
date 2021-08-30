@@ -29,4 +29,7 @@ Rails.application.routes.draw do
 
   get 'bookshelves/:bookshelf_id/books/new', to: 'bookshelf_books#new'
   post "bookshelves/:bookshelf_id/books", to: "bookshelf_books#create"
+
+  get '/books/:book_id/edit', to: 'books#edit'
+  patch 'books/:book_id', to: 'books#update'
 end
