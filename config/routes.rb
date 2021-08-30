@@ -26,4 +26,7 @@ Rails.application.routes.draw do
 
   get 'car_lots/:car_lot_id/vehicles/new', to: 'car_lot_vehicles#new'
   post "car_lots/:car_lot_id/vehicles", to: 'car_lot_vehicles#create'
+
+  get 'bookshelves/:bookshelf_id/books/new', to: 'bookshelf_books#new'
+  post "bookshelves/:bookshelf_id/books", to: "bookshelf_books#create"
 end
