@@ -42,13 +42,7 @@ RSpec.describe 'the bookshelves index page', type: :feature do
 
     click_link shelf1.name
 
-    expect(current_path).to eq("/bookshelves/#{shelf1.name}/edit")
+    expect(current_path).to eq("/bookshelves/#{shelf1.id}/edit")
   end
 
 end
-#
-# As a visitor
-# When I visit the parent index page
-# Next to every parent, I see a link to edit that parent's info
-# When I click the link
-# I should be taken to that parents edit page where I can update its information just like in User Story 4
