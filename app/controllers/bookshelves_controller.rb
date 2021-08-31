@@ -32,6 +32,7 @@ class BookshelvesController < ApplicationController
   end
 
   def destroy
+    Book.where(bookshelf_id: params[:id]).destroy_all
     Bookshelf.destroy(params[:id])
     redirect_to "/bookshelves/"
   end

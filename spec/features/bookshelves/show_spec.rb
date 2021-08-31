@@ -47,6 +47,8 @@ RSpec.describe 'a particular bookshelf page', type: :feature do
 
   it 'can delete bookshelves' do
     shelf = Bookshelf.create!(name: "Mahogany", full: false, capacity: 31)
+    book1 = Book.create!(name: "Feet of Clay", author: 'Terry Pratchett', read: false, read_time: 7, bookshelf_id: shelf.id)
+    book2 = Book.create!(name: "Three Guineas", author: 'Virginia Woolf', read: false, read_time: 17, bookshelf_id: shelf.id)
 
     visit "/bookshelves/#{shelf.id}"
 

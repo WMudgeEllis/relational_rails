@@ -31,12 +31,6 @@ RSpec.describe 'Bookshelf books page', type: :feature do
 
     expect(page).to_not have_content(book3.name)
     expect(page).to_not have_content(book3.author)
-    expect(page).to_not have_content(book3.read)
-    expect(page).to_not have_content(book3.read_time)
-    expect(page).to_not have_content(book3.bookshelf_id)
-    expect(page).to_not have_content(book3.created_at)
-    expect(page).to_not have_content(book3.updated_at)
-
   end
 
   it 'links to create new book' do
