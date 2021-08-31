@@ -1,0 +1,11 @@
+<%= form_with url:"/books/#{@book.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :author %>
+  <%= form.text_field :author %>
+  <%= form.label :read %>
+  <%= form.select :read, ["pick one","true","false"] %>
+  <%= form.label :read_time %>
+  <%= form.number_field :read_time %>
+  <%= form.submit "submit" %>
+<% end %>

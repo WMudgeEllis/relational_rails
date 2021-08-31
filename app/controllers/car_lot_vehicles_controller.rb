@@ -11,6 +11,9 @@ class CarLotVehiclesController < ApplicationController
   end
 
   def create
-
+    lot = CarLot.find(params[:car_lot_id])
+    sold = params[:sold] == "true"
+    lot.vehicles.create(name: params[:name], sold: sold, price: params[:price])
+    redirect_to "/car_lots/#{lot.id}/vehicles"
   end
 end

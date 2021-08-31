@@ -23,18 +23,12 @@ RSpec.describe 'car lot vehicle index page', type: :feature do
     expect(page).to have_content(car2.id)
   end
 
-  it 'lets user create vehicles' do 
+  it 'links to create new' do 
     fly_guys = CarLot.create!(name: "Fly Rydes", being_cleaned: true, lot_area: 1200)
     visit "/car_lots/#{fly_guys.id}/vehicles"
     expect(page).to have_link("create new vehicle")
     click_link "create new vehicle"
     expect(page.current_path).to eq("/car_lots/#{fly_guys.id}/vehicles/new")
-    fill_in :name, :with => "John Deere"
-    fill_in :price, :with => 45000
-    click_button "submit"
-    expect(page.current_path).to eq("/car_lots/#{fly_guys.id}/vehicles")
-    expect(page).to have_content("John")
-    expect(page).to have_content("45000")
   end
 end
 # User Story 13, Parent Child Creation (x2)
@@ -49,3 +43,12 @@ end
 # Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
 # a new child object/row is created for that parent,
 # and I am redirected to the Parent Childs Index page where I can see the new child listed
+
+
+
+
+# if update, then redirect.. else error message 
+# flash message 
+#   this is the page for "any view" to DRY up code
+#   flash message in "body" 
+# use this page for header/footer
