@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index
     @books = Book.read_books
+    @books = Book.read_books.min_read_time(params[:min_time]) if params[:min_time] != nil
   end
 
   def show

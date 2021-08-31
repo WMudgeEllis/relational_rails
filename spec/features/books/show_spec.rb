@@ -20,9 +20,13 @@ RSpec.describe 'book details show page', type: :feature do
   it 'can link to a update page' do
     shelf = Bookshelf.create!(name: "Bamboo", full: false, capacity: 22)
     book = Book.create!(name: "Feet of Clay", author: 'Terry Pratchett', read: false, read_time: 7, bookshelf_id: shelf.id)
+
     visit "/books/#{book.id}"
+
     expect(page).to have_link "update book"
+
     click_link "update book"
+
     expect(current_path).to eq("/books/#{book.id}/edit")
   end
 
@@ -33,6 +37,7 @@ RSpec.describe 'book details show page', type: :feature do
     visit "/books/#{book.id}"
 
     expect(page).to have_link('Delete Book')
+
     click_link 'Delete Book'
 
     expect(current_path).to eq("/books")

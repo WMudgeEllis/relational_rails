@@ -8,4 +8,8 @@ class Book < ApplicationRecord
   def self.alphabetize
     Book.order(:name)
   end
+
+  def self.min_read_time(min)
+    Book.where("books.read_time > #{min}")
+  end
 end
