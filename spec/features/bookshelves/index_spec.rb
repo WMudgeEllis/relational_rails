@@ -9,8 +9,7 @@ RSpec.describe 'the bookshelves index page', type: :feature do
 
     expect(page).to have_content(shelf1.name)
     expect(page).to have_content(shelf2.created_at)
-    expect(page.all(:css, "p")[0].text.include?("Cherry")).to be(true)
-
+    expect(shelf2.name).to appear_before(shelf1.name)
   end
 
   it 'can link to new bookshelves' do

@@ -7,3 +7,4 @@
 <p>read: <%= @books.read %></p>
 <p>read time: <%= @books.read_time %></p>
 <p>bookshelf id: <%= @books.bookshelf_id %></p>
+<%= link_to 'Delete Book', "/books/#{@books.id}", method: 'delete' %>
