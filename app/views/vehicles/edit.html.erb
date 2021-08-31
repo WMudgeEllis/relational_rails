@@ -1,0 +1,9 @@
+<%= form_with url:"/vehicles/#{@vehicle.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :sold? %>
+  <%= form.select :sold, ["pick one","true","false"] %>
+  <%= form.label :price %>
+  <%= form.number_field :price %>
+  <%= form.submit "submit" %>
+<% end %>

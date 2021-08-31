@@ -19,8 +19,6 @@ RSpec.describe 'vehicle details show page' do
     car = Vehicle.create!(name: 'Toyota Yaris', sold: true, price: 7500, car_lot_id: fly_guys.id)
     visit "vehicles/#{car.id}"
     expect(page).to have_link("update vehicle")
-    # capybara bug, duplicates "vehicles" in the route. probably related to the not explicit redirect in parent/child/index spec. bug hunt later... watch out bugs
-    #  "/vehicles/vehicles/764/edit
     click_link "update vehicle"
     expect(current_path).to eq("/vehicles/#{car.id}/edit")
   end
