@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index 
-    @books = Book.all
+    @books = Book.read_books
   end
 
   def show 

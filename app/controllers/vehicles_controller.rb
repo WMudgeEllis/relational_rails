@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
   def index
-    @cars = Vehicle.all
+    @cars = Vehicle.only_sold
   end
 
   def show
