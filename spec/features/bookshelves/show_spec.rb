@@ -27,13 +27,17 @@ RSpec.describe 'a particular bookshelf page', type: :feature do
     shelf = Bookshelf.create!(name: "Mahogany", full: false, capacity: 31)
 
     visit "/bookshelves/#{shelf.id}"
+
     expect(page).to have_link("update shelf")
+
     click_link "update shelf"
-    save_and_open_page
+
     expect(page.current_path).to eq "/bookshelves/#{shelf.id}/edit"
+
     fill_in :name, with: "Steel"
     select :true, from: 'full'
     fill_in :capacity, with: 2000
+
     click_button "submit"
 
     expect(page.current_path).to eq "/bookshelves/#{shelf.id}"

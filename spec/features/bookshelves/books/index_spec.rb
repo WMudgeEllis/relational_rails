@@ -8,7 +8,7 @@ RSpec.describe 'Bookshelf books page', type: :feature do
     shelf2 = Bookshelf.create!(name: "DIFFERENT", full: false, capacity: 22)
     book1 = Book.create!(name: "Feet of Clay", author: 'Terry Pratchett', read: false, read_time: 7, bookshelf_id: shelf1.id)
     book2 = Book.create!(name: "Three Guineas", author: 'Virginia Woolf', read: false, read_time: 17, bookshelf_id: shelf1.id)
-    book3 = Book.create!(name: "Three Guineas", author: 'Virginia Woolf', read: false, read_time: 17, bookshelf_id: shelf2.id)
+    book3 = Book.create!(name: "Sleepz for Dymmies", author: 'Sleep Meister Main', read: false, read_time: 17, bookshelf_id: shelf2.id)
 
 
     visit "/bookshelves/#{shelf1.id}/books"
@@ -28,13 +28,26 @@ RSpec.describe 'Bookshelf books page', type: :feature do
     expect(page).to have_content(book2.bookshelf_id)
     expect(page).to have_content(book2.created_at)
     expect(page).to have_content(book2.updated_at)
+
+    expect(page).to_not have_content(book3.name)
+    expect(page).to_not have_content(book3.author)
+    expect(page).to_not have_content(book3.read)
+    expect(page).to_not have_content(book3.read_time)
+    expect(page).to_not have_content(book3.bookshelf_id)
+    expect(page).to_not have_content(book3.created_at)
+    expect(page).to_not have_content(book3.updated_at)
+
   end
 
   it 'links to create new book' do
     shelf = Bookshelf.create!(name: "Bamboo", full: false, capacity: 22)
+
     visit "/bookshelves/#{shelf.id}/books"
+
     expect(page).to have_link "new book"
+
     click_link "new book"
+
     expect(current_path).to eq("/bookshelves/#{shelf.id}/books/new")
   end
 
