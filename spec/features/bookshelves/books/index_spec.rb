@@ -1,10 +1,5 @@
-#
-# As a visitor
-# When I visit '/parents/:parent_id/child_table_name'
-# Then I see each Child that is associated with that Parent with each Child's attributes:
 
 require 'rails_helper'
-
 
 RSpec.describe 'Bookshelf books page', type: :feature do
 
@@ -42,14 +37,19 @@ RSpec.describe 'Bookshelf books page', type: :feature do
     click_link "new book"
     expect(current_path).to eq("/bookshelves/#{shelf.id}/books/new")
   end
+
+  it 'links to alphabetical order' do
+    shelf = Bookshelf.create!(name: "Bamboo", full: false, capacity: 22)
+    book1 = Book.create!(name: "Feet of Clay", author: 'Terry Pratchett', read: false, read_time: 7, bookshelf_id: shelf.id)
+    book2 = Book.create!(name: "Three Guineas", author: 'Virginia Woolf', read: false, read_time: 17, bookshelf_id: shelf.id)
+    book3 = Book.create!(name: "The Republic", author: "Plato", read: true, read_time: 15, bookshelf_id: shelf.id)
+
+    visit "/bookshelves/#{shelf.id}/books"
+
+    expect(page).to have_link('alphabetize')
+    click_link 'alphabetize'
+
+    expect(book3.name).to appear_before(book2.name)
+    expect(book1.name).to appear_before(book3.name)
+  end
 end
-# As a visitor
-# When I visit a Parent Childs Index page
-# Then I see a link to add a new adoptable child for that parent "Create Child"
-# When I click the link
-# I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
-# When I fill in the form with the child's attributes:
-# And I click the button "Create Child"
-# Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
-# a new child object/row is created for that parent,
-# and I am redirected to the Parent Childs Index page where I can see the new child listed
