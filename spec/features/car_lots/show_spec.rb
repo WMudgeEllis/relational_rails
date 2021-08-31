@@ -39,4 +39,27 @@ RSpec.describe 'a particular car lot', type: :feature do
     expect(page).to have_content('Yotas')
     expect(page).to have_content(7589)
   end
+
+  it 'deletes car lot and all vehicles in the car lot' do 
+    lot = CarLot.create!(name: "Michael's Bummer Dealz", being_cleaned: false, lot_area: 310)
+    car1 = Vehicle.create!(name: 'Toyota Yaris', sold: true, price: 7500, car_lot_id: lot.id)
+    car2 = Vehicle.create!(name: 'Chevrolet Silverado', sold: true, price: 10000, car_lot_id: lot.id)
+    visit "/car_lots/#{lot.id}"
+    expect(page).to have_link("Delete Car Lot")
+    click_link "Delete Car Lot"
+    expect(current_path).to eq("/car_lots")
+    expect(page).to_not have_content(lot.name)
+    expect(page).to_not have_button('Delete Car Lot')
+  end
 end
+# User Story 19, Parent Delete (x2)
+
+# As a visitor
+# When I visit a parent show page
+# Then I see a link to delete the parent
+# When I click the link "Delete Parent"
+# Then a 'DELETE' request is sent to '/parents/:id',
+# the parent is deleted, and all child records are deleted
+# and I am redirected to the parent index page where I no longer see this parent
+
+# <p><a href="/car_lots/<%= @car_lots.id %>", method='delete'>delete car lot</a></p>

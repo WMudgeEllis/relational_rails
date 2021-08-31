@@ -2,10 +2,16 @@
 <p><a href="/car_lots/<%= @car_lots.id %>/vehicles">All vehicles for this car lot</a></p>
 <p><a href="/car_lots/<%= @car_lots.id %>/edit">update car lot</a></p>
 
+<%= link_to "Delete Car Lot", url:"/car_lots/#{@car_lots.id}", method: 'delete' %>
+
 <p>id: <%= @car_lots.id %></p>
 <p>created: <%= @car_lots.created_at %></p>
 <p>updated: <%= @car_lots.updated_at %></p>
 <p>being cleaned: <%= @car_lots.being_cleaned %></p>
 <p>lot area: <%= @car_lots.lot_area %></p>
 <p>the number of vehicles in this car lot is: <%= @car_lots.number_of_vehicles %></p>
+
+
+
+ 
 
