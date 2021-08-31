@@ -1,13 +1,13 @@
 <h1>Vehicles</h1>
 <a href="/car_lots/<%= @car_lot.id %>/vehicles/new">create new vehicle</a>
-<a href="/car_lots/<%= @car_lot.id %>/vehicles">alphabetical order</a>
+<%= link_to 'alphabetize', "/car_lots/#{@car_lot.id}/vehicles?alpha=true" %>
 
-<% @cars.each do |car| %>
-  <h3>name: <%= car.name %></h3>
-  <p>id: <%= car.id %></p>
-  <p>sold: <%= car.sold %></p>
-  <p>price: <%= car.price %></p>
-  <p>car lot id: <%= car.car_lot_id %></p>
-  <p>created: <%= car.created_at %></p>
-  <p>updated: <%= car.updated_at %></p>
+<% @vehicles.each do |vehicle| %>
+  <h3>name: <%= vehicle.name %></h3>
+  <p>id: <%= vehicle.id %></p>
+  <p>sold: <%= vehicle.sold %></p>
+  <p>price: <%= vehicle.price %></p>
+  <p>car lot id: <%= vehicle.car_lot_id %></p>
+  <p>created: <%= vehicle.created_at %></p>
+  <p>updated: <%= vehicle.updated_at %></p>
 <% end %>

@@ -36,10 +36,11 @@ RSpec.describe 'car lot vehicle index page', type: :feature do
     car1 = Vehicle.create!(name: 'Toyota Yaris', sold: true, price: 7500, car_lot_id: fly_guys.id)
     car2 = Vehicle.create!(name: 'Chevrolet Silverado', sold: false, price: 10000, car_lot_id: fly_guys.id)
     visit "/car_lots/#{fly_guys.id}/vehicles"
-    expect(page).to have_link("alphabetical order")
-    click_link("alphabetical order")
+    expect(car1.name).to appear_before(car2.name)
+    expect(page).to have_link("alphabetize")
+    click_link("alphabetize")
     expect(current_path).to eq("/car_lots/#{fly_guys.id}/vehicles")
-    expect(Vehicle.alphabetize).to eq([car2, car1])
+    expect(car2.name).to appear_before(car1.name)
   end
 end
 

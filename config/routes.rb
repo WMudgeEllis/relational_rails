@@ -35,4 +35,6 @@ Rails.application.routes.draw do
 
   get '/vehicles/:vehicle_id/edit', to: 'vehicles#edit'
   patch '/vehicles/:vehicle_id', to: 'vehicles#update'
+
+  
 end
