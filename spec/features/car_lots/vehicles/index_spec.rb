@@ -30,25 +30,24 @@ RSpec.describe 'car lot vehicle index page', type: :feature do
     click_link "create new vehicle"
     expect(page.current_path).to eq("/car_lots/#{fly_guys.id}/vehicles/new")
   end
+
+  it 'should alphabetize the order of vehicles' do 
+    fly_guys = CarLot.create!(name: "Fly Rydes", being_cleaned: true, lot_area: 1200)
+    car1 = Vehicle.create!(name: 'Toyota Yaris', sold: true, price: 7500, car_lot_id: fly_guys.id)
+    car2 = Vehicle.create!(name: 'Chevrolet Silverado', sold: false, price: 10000, car_lot_id: fly_guys.id)
+    visit "/car_lots/#{fly_guys.id}/vehicles"
+    expect(page).to have_link("alphabetical order")
+    click_link("alphabetical order")
+    expect(current_path).to eq("/car_lots/#{fly_guys.id}/vehicles")
+    expect(Vehicle.alphabetize).to eq([car2, car1])
+  end
 end
-# User Story 13, Parent Child Creation (x2)
+# User Story 16, Sort Parent's Children in Alphabetical Order by name (x2)
 
 # As a visitor
-# When I visit a Parent Childs Index page
-# Then I see a link to add a new adoptable child for that parent "Create Child"
-# When I click the link
-# I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
-# When I fill in the form with the child's attributes:
-# And I click the button "Create Child"
-# Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
-# a new child object/row is created for that parent,
-# and I am redirected to the Parent Childs Index page where I can see the new child listed
+# When I visit the Parent's children Index Page
+# Then I see a link to sort children in alphabetical order
+# When I click on the link
+# I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
 
 
-
-
-# if update, then redirect.. else error message 
-# flash message 
-#   this is the page for "any view" to DRY up code
-#   flash message in "body" 
-# use this page for header/footer

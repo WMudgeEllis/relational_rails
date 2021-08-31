@@ -29,6 +29,3 @@ RSpec.describe 'vehicles index page' do
     expect(page).to_not have_content("Silverado")
   end
 end
-# As a visitor
-# When I visit the child index
-# Then I only see records where the boolean column is `true`
