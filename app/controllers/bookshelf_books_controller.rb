@@ -3,7 +3,7 @@ class BookshelfBooksController < ApplicationController
   def index
     @books = Book.where(bookshelf_id: params[:bookshelf_id])
     @shelf = Bookshelf.find(params[:bookshelf_id])
-    @books = Book.alphabetize if params[:alpha] == 'true'
+    @books = Book.where(bookshelf_id: params[:bookshelf_id]).alphabetize if params[:alpha] == 'true'
   end
 
   def new
