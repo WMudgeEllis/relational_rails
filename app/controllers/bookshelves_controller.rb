@@ -20,7 +20,7 @@ class BookshelvesController < ApplicationController
     redirect_to '/bookshelves'
   end
 
-  def edit  
+  def edit
     @bookshelves = Bookshelf.find(params[:bookshelf_id])
   end
 
@@ -29,5 +29,10 @@ class BookshelvesController < ApplicationController
     full = params[:full] == 'true'
     shelf.update(name: params[:name], full: full, capacity: params[:capacity].to_i)
     redirect_to "/bookshelves/#{shelf.id}"
+  end
+
+  def destroy
+    Bookshelf.destroy(params[:id])
+    redirect_to "/bookshelves/"
   end
 end

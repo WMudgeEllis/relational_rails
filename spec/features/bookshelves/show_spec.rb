@@ -38,4 +38,17 @@ RSpec.describe 'a particular bookshelf page', type: :feature do
     expect(page).to have_content("Steel")
     expect(page).to have_content(2000)
   end
+
+  it 'can delete bookshelves' do
+    shelf = Bookshelf.create!(name: "Mahogany", full: false, capacity: 31)
+
+    visit "/bookshelves/#{shelf.id}"
+
+    expect(page).to have_link('Delete Bookshelf')
+
+    click_link 'Delete Bookshelf'
+
+    expect(current_path).to eq("/bookshelves/")
+    expect(page).to_not have_content(shelf.name)
+  end
 end
