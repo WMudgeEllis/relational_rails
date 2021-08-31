@@ -46,7 +46,9 @@ RSpec.describe 'Bookshelf books page', type: :feature do
 
     visit "/bookshelves/#{shelf.id}/books"
 
+    expect(book2.name).to appear_before(book3.name)
     expect(page).to have_link('alphabetize')
+
     click_link 'alphabetize'
 
     expect(book3.name).to appear_before(book2.name)
