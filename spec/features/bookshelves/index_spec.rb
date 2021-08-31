@@ -6,7 +6,7 @@ RSpec.describe 'the bookshelves index page', type: :feature do
     shelf2 = Bookshelf.create!(name: "Cherry Wood", full: true, capacity: 31, created_at: Date.tomorrow)
 
     visit '/bookshelves'
-    # require "pry"; binding.pry
+
     expect(page).to have_content(shelf1.name)
     expect(page).to have_content(shelf2.created_at)
     expect(page.all(:css, "p")[0].text.include?("Cherry")).to be(true)
@@ -30,4 +30,19 @@ RSpec.describe 'the bookshelves index page', type: :feature do
 
     expect(page).to have_content(shelf.name)
   end
+
+  it 'each shelf can link to edit page' do
+    shelf1 = Bookshelf.create!(name: "Mahogany", full: true, capacity: 31)
+    shelf2 = Bookshelf.create!(name: "Cherry Wood", full: true, capacity: 31, created_at: Date.tomorrow)
+
+    visit '/bookshelves'
+
+    expect(page).to have_link("edit #{shelf1.name}")
+    expect(page).to have_link("edit #{shelf2.name}")
+
+    click_link shelf1.name
+
+    expect(current_path).to eq("/bookshelves/#{shelf1.id}/edit")
+  end
+
 end
