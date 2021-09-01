@@ -59,11 +59,3 @@ RSpec.describe 'the bookshelves index page', type: :feature do
     expect(page).to_not have_content(shelf1.name)
   end
 end
-#
-# User Story 22, Parent Delete From Parent Index Page (x1)
-#
-# As a visitor
-# When I visit the parent index page
-# Next to every parent, I see a link to delete that parent
-# When I click the link
-# I am returned to the Parent Index Page where I no longer see that parent

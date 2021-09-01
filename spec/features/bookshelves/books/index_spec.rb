@@ -76,10 +76,20 @@ RSpec.describe 'Bookshelf books page', type: :feature do
 
     expect(current_path).to eq("/books/#{book1.id}/edit")
   end
+
+  it 'deletes a bookshelf from index page' do
+    shelf = Bookshelf.create!(name: "Bamboo", full: false, capacity: 22)
+    book1 = Book.create!(name: "Green Eggs and Ham", author: 'Dr. Suess', read: true, read_time: 3, bookshelf_id: shelf.id)
+    book2 = Book.create!(name: "Sleeping 4 Dummiez", author: 'Sleep Meister Mew', read: true, read_time: 17, bookshelf_id: shelf.id)
+
+    visit "/bookshelves/#{shelf.id}/books"
+
+    expect(page).to have_link("delete #{book1.name}")
+    expect(page).to have_link("delete #{book2.name}")
+
+    click_link "delete #{book1.name}"
+
+    expect(current_path).to eq("/books")
+    expect(page).to_not have_content(book1.name)
+  end
 end
-#
-# As a visitor
-# When I visit the `child_table_name` index page or a parent `child_table_name` index page
-# Next to every child, I see a link to edit that child's info
-# When I click the link
-# I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 11

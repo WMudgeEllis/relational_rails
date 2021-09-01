@@ -63,4 +63,20 @@ RSpec.describe 'book index page', type: :feature do
 
     expect(current_path).to eq("/books/#{book1.id}/edit")
   end
+
+  it 'deletes a bookshelf from index page' do
+    shelf = Bookshelf.create!(name: "Bamboo", full: false, capacity: 22)
+    book1 = Book.create!(name: "Green Eggs and Ham", author: 'Dr. Suess', read: true, read_time: 3, bookshelf_id: shelf.id)
+    book2 = Book.create!(name: "Sleeping 4 Dummiez", author: 'Sleep Meister Mew', read: true, read_time: 17, bookshelf_id: shelf.id)
+
+    visit '/books'
+
+    expect(page).to have_link("delete #{book1.name}")
+    expect(page).to have_link("delete #{book2.name}")
+
+    click_link "delete #{book1.name}"
+
+    expect(current_path).to eq("/books")
+    expect(page).to_not have_content(book1.name)
+  end
 end
