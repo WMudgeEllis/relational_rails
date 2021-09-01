@@ -1,8 +1,9 @@
 <h1><%= @cars.name %></h1>
 
-<%= link_to "delete vehicle", url:"/vehicles/#{@vehicles.id}", method: 'delete' %>
+<a href="/vehicles/<%= @cars.id %>/edit">update vehicle</a><br>
 
-<a href="/vehicles/<%= @cars.id %>/edit">update vehicle</a>
+<%= link_to "delete vehicle", "/vehicles/#{@cars.id}", method: 'delete' %>
+
 <p>id: <%= @cars.id %></p>
 <p>created_at: <%= @cars.created_at %></p>
 <p>updated_at: <%= @cars.updated_at %></p>

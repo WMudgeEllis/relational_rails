@@ -45,11 +45,10 @@ RSpec.describe 'a particular car lot', type: :feature do
     car1 = Vehicle.create!(name: 'Toyota Yaris', sold: true, price: 7500, car_lot_id: lot.id)
     car2 = Vehicle.create!(name: 'Chevrolet Silverado', sold: true, price: 10000, car_lot_id: lot.id)
     visit "/car_lots/#{lot.id}"
-    expect(page).to have_link("Delete Car Lot")
-    click_link "Delete Car Lot"
+    expect(page).to have_link("delete car lot")
+    click_link "delete car lot"
     expect(current_path).to eq("/car_lots")
     expect(page).to_not have_content(lot.name)
-    expect(page).to_not have_button('Delete Car Lot')
   end
 end
 # User Story 19, Parent Delete (x2)

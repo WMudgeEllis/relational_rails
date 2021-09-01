@@ -37,4 +37,5 @@ Rails.application.routes.draw do
   patch '/vehicles/:vehicle_id', to: 'vehicles#update'
 
   delete '/car_lots/:car_lot_id', to: 'car_lots#destroy'
+  delete '/vehicles/:vehicle_id', to: 'vehicles#destroy'
 end

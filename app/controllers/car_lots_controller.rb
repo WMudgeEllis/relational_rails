@@ -32,9 +32,8 @@ class CarLotsController < ApplicationController
   end
 
   def destroy 
-    require "pry"; binding.pry
-    
-    CarLot.destroy(params[:id])
+    Vehicle.where(car_lot_id: params[:car_lot_id]).destroy_all
+    CarLot.destroy(params[:car_lot_id])
     redirect_to "/car_lots"
   end
 end

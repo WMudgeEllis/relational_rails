@@ -17,7 +17,7 @@ RSpec.describe 'vehicle details show page' do
   it 'links to update vehicle' do
     fly_guys = CarLot.create!(name: "Fly Rydes", being_cleaned: true, lot_area: 1200)
     car = Vehicle.create!(name: 'Toyota Yaris', sold: true, price: 7500, car_lot_id: fly_guys.id)
-    visit "vehicles/#{car.id}"
+    visit "/vehicles/#{car.id}"
     expect(page).to have_link("update vehicle")
     click_link "update vehicle"
     expect(current_path).to eq("/vehicles/#{car.id}/edit")
@@ -25,9 +25,9 @@ RSpec.describe 'vehicle details show page' do
 
   it 'deletes a vehicle' do
     fly_guys = CarLot.create!(name: "Fly Rydes", being_cleaned: true, lot_area: 1200)
-    car1 = Vehicle.create!(name: 'Toyota Yaris', sold: true, price: 7500, car_lot_id: fly_guys.id)
+    car = Vehicle.create!(name: 'Toyota Yaris', sold: true, price: 7500, car_lot_id: fly_guys.id)
     car2 = Vehicle.create!(name: 'Toyota Taco', sold: true, price: 17500, car_lot_id: fly_guys.id)
-    visit "/vehicles/#{car1.id}"
+    visit "/vehicles/#{car.id}"
     expect(page).to have_link('delete vehicle')
     click_link "delete vehicle"
     expect(current_path).to eq("/vehicles")
