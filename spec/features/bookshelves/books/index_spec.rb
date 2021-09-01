@@ -92,4 +92,21 @@ RSpec.describe 'Bookshelf books page', type: :feature do
     expect(current_path).to eq("/books")
     expect(page).to_not have_content(book1.name)
   end
+
+  it 'can filter by read time' do
+    shelf = Bookshelf.create!(name: "Bamboo", full: false, capacity: 22)
+    book1 = Book.create!(name: "Green Eggs and Ham", author: 'Dr. Suess', read: true, read_time: 3, bookshelf_id: shelf.id)
+    book2 = Book.create!(name: "Sleeping 4 Dummiez", author: 'Sleep Meister Mew', read: true, read_time: 17, bookshelf_id: shelf.id)
+
+    visit "/bookshelves/#{shelf.id}/books"
+
+    fill_in :min_time, with: 10
+
+    click_button 'Only return records with more than number of read time'
+
+    # expect(current_path).to eq("/bookshelves/#{shelf.id}/books")
+    expect(page).to have_content(book2.name)
+    expect(page).to_not have_content(book1.name)
+  end
+
 end
