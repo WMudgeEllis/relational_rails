@@ -11,3 +11,9 @@
   <p>created: <%= vehicle.created_at %></p>
   <p>updated: <%= vehicle.updated_at %></p>
 <% end %>
+
+<%= form_with url: "/car_lots/#{@car_lot.id}/vehicles", method: :get, local: true do |form| %>
+  <%= form.label 'enter the least amount of money you would like to spend' %>
+  <%= form.number_field :budget %>
+  <%= form.submit "Only return records with more than number of price" %>
+<% end %>

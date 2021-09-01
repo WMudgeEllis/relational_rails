@@ -4,9 +4,10 @@ class CarLotVehiclesController < ApplicationController
     @vehicles = Vehicle.where(car_lot_id: params[:car_lot_id])
     @car_lot = CarLot.find(params[:car_lot_id])
     @vehicles = Vehicle.where(car_lot_id: params[:car_lot_id]).alphabetize if params[:alpha] == 'true'
+    @vehicles = Vehicle.only_sold.budget(params[:budget]) if params[:budget] != nil
   end
 
-  def new 
+  def new
     @car_lot = CarLot.find(params[:car_lot_id])
   end
 

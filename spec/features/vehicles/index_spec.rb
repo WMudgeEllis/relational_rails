@@ -20,7 +20,7 @@ RSpec.describe 'vehicles index page' do
     expect(page).to have_content(car2.id)
   end
 
-  it 'should return only sold vehicles' do 
+  it 'should return only sold vehicles' do
     fly_guys = CarLot.create!(name: "Fly Rydes", being_cleaned: true, lot_area: 1200)
     car1 = Vehicle.create!(name: 'Toyota Yaris', sold: true, price: 7500, car_lot_id: fly_guys.id)
     car2 = Vehicle.create!(name: 'Chevrolet Silverado', sold: false, price: 10000, car_lot_id: fly_guys.id)
@@ -41,10 +41,3 @@ RSpec.describe 'vehicles index page' do
     expect(page).to_not have_content(car1.name)
   end
 end
-# User Story 21, Display Records Over a Given Threshold (x2)
-
-# As a visitor
-# When I visit the Parent's children Index Page
-# I see a form that allows me to input a number value
-# When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
-# Then I am brought back to the current index page with only the records that meet that threshold shown.
