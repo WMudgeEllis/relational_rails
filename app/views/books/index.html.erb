@@ -9,11 +9,11 @@
   <p>bookshelf id: <%= book.bookshelf_id %></p>
   <p>created: <%= book.created_at %></p>
   <p>updated: <%= book.updated_at %></p>
+  <p><a href="/books/<%= book.id %>/edit">edit <%= book.name %></a></p>
 <% end %>
 
 <%= form_with url: "/books", method: :get, local: true do |form| %>
   <%= form.label 'enter the minimum number of read time you want' %>
   <%= form.number_field :min_time %>
   <%= form.submit 'Only return records with more than number of read time' %>
-
 <% end %>

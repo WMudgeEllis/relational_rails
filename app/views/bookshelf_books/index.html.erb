@@ -10,4 +10,5 @@
   <p>bookshelf id: <%= book.bookshelf_id %></p>
   <p>created: <%= book.created_at %></p>
   <p>updated: <%= book.updated_at %></p>
+  <p><a href="/books/<%= book.id %>/edit">edit <%= book.name %></a></p>
 <% end %>
