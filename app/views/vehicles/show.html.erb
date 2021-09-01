@@ -1,13 +1,12 @@
-<h1><%= @cars.name %></h1>
+<h1><%= @vehicles.name %></h1>
 
-<a href="/vehicles/<%= @cars.id %>/edit">update vehicle</a><br>
+<a href="/vehicles/<%= @vehicles.id %>/edit">update vehicle</a><br>
 
-<%= link_to "delete vehicle", "/vehicles/#{@cars.id}", method: 'delete' %>
+<%= link_to "delete vehicle", "/vehicles/#{@vehicles.id}", method: 'delete' %>
 
-<p>id: <%= @cars.id %></p>
-<p>created_at: <%= @cars.created_at %></p>
-<p>updated_at: <%= @cars.updated_at %></p>
-<p>sold: <%= @cars.sold %></p>
-<p>price : <%= @cars.price %></p>
-<p>car lot id: <%= @cars.car_lot_id %></p>
-
+<p>id: <%= @vehicles.id %></p>
+<p>created_at: <%= @vehicles.created_at %></p>
+<p>updated_at: <%= @vehicles.updated_at %></p>
+<p>sold: <%= @vehicles.sold %></p>
+<p>price : <%= @vehicles.price %></p>
+<p>car lot id: <%= @vehicles.car_lot_id %></p>
