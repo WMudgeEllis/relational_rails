@@ -5,7 +5,6 @@ class BookshelfBooksController < ApplicationController
     @shelf = Bookshelf.find(params[:bookshelf_id])
     @books = Book.where(bookshelf_id: params[:bookshelf_id]).alphabetize if params[:alpha] == 'true'
     @books = Book.read_books.min_read_time(params[:min_time]) if params[:min_time] != nil
-    
   end
 
   def new

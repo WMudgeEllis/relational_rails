@@ -1,14 +1,14 @@
 class VehiclesController < ApplicationController
   def index
-    @cars = Vehicle.only_sold
-    @cars = Vehicle.only_sold.budget(params[:budget]) if params[:budget] != nil
+    @vehicles = Vehicle.only_sold
+    @vehicles = Vehicle.only_sold.budget(params[:budget]) if params[:budget] != nil
   end
 
   def show
-    @cars = Vehicle.find(params[:id])
+    @vehicles = Vehicle.find(params[:id])
   end
 
-  def edit 
+  def edit
     @vehicle = Vehicle.find(params[:vehicle_id])
   end
 

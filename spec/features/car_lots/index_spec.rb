@@ -10,8 +10,8 @@ RSpec.describe 'the car_lot index page', type: :feature do
     expect(page.all(:css, "p")[0].text.include?("Dealz")).to be(true)
   end
 
-  it 'can link to new car lots' do 
-    visit '/car_lots' 
+  it 'can link to new car lots' do
+    visit '/car_lots'
     expect(page).to have_link("new car lot")
     click_link "new car lot"
     expect(page.current_path).to eq('/car_lot/new')
@@ -22,7 +22,7 @@ RSpec.describe 'the car_lot index page', type: :feature do
     expect(page).to have_content(lot.name)
   end
 
-  it 'can link you to edit car lot' do 
+  it 'can link you to edit car lot' do
     lot1 = CarLot.create!(name: "Michael's Bummer Dealz", being_cleaned: false, lot_area: 310)
     lot2 = CarLot.create!(name: "Late Comer Deals", being_cleaned: false, lot_area: 310)
     visit "/car_lots"
@@ -32,10 +32,3 @@ RSpec.describe 'the car_lot index page', type: :feature do
     expect(current_path).to eq("/car_lots/#{lot1.id}/edit")
   end
 end
-# User Story 17, Parent Update From Parent Index Page (x2)
-
-# As a visitor
-# When I visit the parent index page
-# Next to every parent, I see a link to edit that parent's info
-# When I click the link
-# I should be taken to that parents edit page where I can update its information just like in User Story 4

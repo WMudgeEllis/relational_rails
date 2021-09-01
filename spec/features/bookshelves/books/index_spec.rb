@@ -104,7 +104,7 @@ RSpec.describe 'Bookshelf books page', type: :feature do
 
     click_button 'Only return records with more than number of read time'
 
-    # expect(current_path).to eq("/bookshelves/#{shelf.id}/books")
+    expect(current_path).to eq("/bookshelves/#{shelf.id}/books")
     expect(page).to have_content(book2.name)
     expect(page).to_not have_content(book1.name)
   end
