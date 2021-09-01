@@ -43,6 +43,3 @@ RSpec.describe 'car lot vehicle index page', type: :feature do
     expect(car2.name).to appear_before(car1.name)
   end
 end
-
-
-

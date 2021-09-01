@@ -1,6 +1,7 @@
 class VehiclesController < ApplicationController
   def index
     @cars = Vehicle.only_sold
+    @cars = Vehicle.only_sold.budget(params[:budget]) if params[:budget] != nil
   end
 
   def show

@@ -8,4 +8,8 @@ class Vehicle < ApplicationRecord
   def self.alphabetize
     Vehicle.order(:name)
   end
+
+  def self.budget(dollars)
+    Vehicle.where("vehicles.price > #{dollars}")
+  end
 end
