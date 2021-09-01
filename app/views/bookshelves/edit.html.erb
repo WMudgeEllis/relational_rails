@@ -1,15 +1,11 @@
-<form action="/bookshelves/<%= @bookshelves.id %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="PATCH">
-  <p>name</p>
-  <input type="text" name="name"><br>
-  <p>full?</p>
-  <select id="full" name="full">
-    <option value="pick one">pick one below</option>
-    <option value=true>true</option>
-    <option value=false>false</option>
-  </select>
-  <p>capacity</p>
-  <input type="integer" name="capacity"><br>
-  <input type="submit" name="submit">
-</form>
+
+<%= form_with url: "/bookshelves/#{@bookshelves.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :full? %>
+  <%= form.select :full, ['pick one below', 'true', 'false'] %>
+  <%= form.label :capacity %>
+  <%= form.number_field :capacity %>
+  <%= form.submit "submit"%>
+
+<% end %>

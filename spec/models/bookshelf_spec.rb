@@ -19,4 +19,6 @@ describe Bookshelf, type: :model do
 
     expect(shelf.number_of_books).to eq(2)
   end
+
+
 end

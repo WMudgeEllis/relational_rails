@@ -3,5 +3,9 @@
 <a href="/bookshelf/new">New Bookshelf</a>
 
 <% @bookshelves.each do |bookshelf| %>
-  <p><%= bookshelf.name %> <%= bookshelf.created_at %> </p>
+  <p><%= bookshelf.name %>
+    <%= bookshelf.created_at %>
+    <%= link_to "edit #{bookshelf.name}", "/bookshelves/#{bookshelf.id}/edit" %>
+    <%= link_to "delete #{bookshelf.name}", "/bookshelves/#{bookshelf.id}", method: 'delete' %>
+  </p>
 <% end %>

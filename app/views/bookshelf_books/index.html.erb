@@ -1,4 +1,5 @@
 <a href="/bookshelves/<%= @shelf.id %>/books/new">new book</a>
+<%= link_to 'alphabetize', "/bookshelves/#{@shelf.id}/books?alpha=true" %>
 
 <% @books.each do |book| %>
   <h3>name: <%= book.name %></h3>
@@ -9,4 +10,6 @@
   <p>bookshelf id: <%= book.bookshelf_id %></p>
   <p>created: <%= book.created_at %></p>
   <p>updated: <%= book.updated_at %></p>
-  <% end %>
+  <p><a href="/books/<%= book.id %>/edit">edit <%= book.name %></a></p>
+  <p><%= link_to "delete #{book.name}", "/books/#{book.id}", method: 'delete' %></p>
+<% end %>

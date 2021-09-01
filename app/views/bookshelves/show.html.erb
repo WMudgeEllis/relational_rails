@@ -8,3 +8,5 @@
 <p>full: <%= @bookshelves.full %></p>
 <p>capacity: <%= @bookshelves.capacity %></p>
 <p>the number of books in this shelf is: <%= @bookshelves.number_of_books %></p>
+
+<%= link_to 'Delete Bookshelf', "/bookshelves/#{@bookshelves.id}", method:'delete'%>

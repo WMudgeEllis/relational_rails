@@ -38,4 +38,7 @@ Rails.application.routes.draw do
 
   delete '/car_lots/:car_lot_id', to: 'car_lots#destroy'
   delete '/vehicles/:vehicle_id', to: 'vehicles#destroy'
+
+  delete '/bookshelves/:id', to: 'bookshelves#destroy'
+  delete '/books/:id', to: 'books#destroy'
 end
