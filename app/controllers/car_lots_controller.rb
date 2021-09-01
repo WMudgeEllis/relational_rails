@@ -30,4 +30,10 @@ class CarLotsController < ApplicationController
     lot.update(name: params[:name], being_cleaned: being_cleaned, lot_area: params[:lot_area].to_i)
     redirect_to "/car_lots/#{lot.id}"
   end
+
+  def destroy 
+    Vehicle.where(car_lot_id: params[:car_lot_id]).destroy_all
+    CarLot.destroy(params[:car_lot_id])
+    redirect_to "/car_lots"
+  end
 end

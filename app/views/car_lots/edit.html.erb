@@ -1,8 +1,3 @@
-<a href="/books">books index</a>
-<a href="/vehicles">vehicle index</a>
-<a href="/bookshelves">bookshelf index</a>
-<a href="/car_lots">car lot index</a>
-
 <form action="/car_lots/<%= @car_lot.id %>" method='post'>
   <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH">
@@ -10,7 +5,7 @@
   <input type="text" name="name"><br>
   <p>lot_area</p>
   <input type="integer" name="lot_area"><br>
-  <p>being_cleaned</p>
+  <p>being_cleaned?</p>
   <select id="being_cleaned" name="being_cleaned">
     <option value="pick one">pick one</option>
     <option value="true">true</option>

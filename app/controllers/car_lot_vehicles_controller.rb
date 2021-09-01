@@ -1,9 +1,9 @@
 class CarLotVehiclesController < ApplicationController
 
   def index
-    cars = Vehicle.all
-    @cars = cars.where(car_lot_id: params[:car_lot_id])
+    @vehicles = Vehicle.where(car_lot_id: params[:car_lot_id])
     @car_lot = CarLot.find(params[:car_lot_id])
+    @vehicles = Vehicle.where(car_lot_id: params[:car_lot_id]).alphabetize if params[:alpha] == 'true'
   end
 
   def new 
