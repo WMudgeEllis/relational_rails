@@ -56,7 +56,7 @@ RSpec.describe 'a particular bookshelf page', type: :feature do
 
     click_link 'Delete Bookshelf'
 
-    expect(current_path).to eq("/bookshelves/")
+    expect(current_path).to eq("/bookshelves")
     expect(page).to_not have_content(shelf.name)
   end
 end
